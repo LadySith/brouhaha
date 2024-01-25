@@ -5,7 +5,6 @@ using UnityEngine;
 public class NPCFollow : MonoBehaviour
 {
     public GameObject Player;
-    public Animator animator;
     //public GameObject NPC;
     public float TargetDisctance;
     public float AllowedDistance;
@@ -14,7 +13,7 @@ public class NPCFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(Player.transform);
+        //transform.LookAt(Player.transform);
         TargetDisctance = Vector3.Distance(Player.transform.position, transform.position);
         if (TargetDisctance >= AllowedDistance)
         {
