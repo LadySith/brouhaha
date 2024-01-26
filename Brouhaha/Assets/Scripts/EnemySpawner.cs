@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     public float SpawnDelay = 3f;
     public List<Enemy> EnemyPrefabs = new List<Enemy>();
     public SpawnMethod EnemySpawnMethod = SpawnMethod.Random;
+    public List<Transform> SpawnLocations = new List<Transform>();
 
     private NavMeshTriangulation Triangulation;
     private Dictionary<int, ObjectPool> EnemyObjectPools = new Dictionary<int, ObjectPool>();
@@ -72,21 +73,29 @@ public class EnemySpawner : MonoBehaviour
         {
             Enemy enemy = poolableObject.GetComponent<Enemy>();
 
-            int VertexIndex = Random.Range(0, Triangulation.vertices.Length);
+            //int VertexIndex = Random.Range(0, Triangulation.vertices.Length);
 
-            NavMeshHit Hit;
-            if (NavMesh.SamplePosition(Triangulation.vertices[VertexIndex], out Hit, 2f, -1))
-            {
-                enemy.Agent.Warp(Hit.position);
-                // enemy needs to get enabled and start chasing now.
-                enemy.EnemyFollow.player = Player;
-                enemy.Agent.enabled = true;
-                enemy.EnemyFollow.StartChasing();
-            }
-            else
-            {
-                Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {Triangulation.vertices[VertexIndex]}");
-            }
+            //NavMeshHit Hit;
+            //if (NavMesh.SamplePosition(Triangulation.vertices[VertexIndex], out Hit, 2f, -1))
+            //{
+            //    enemy.Agent.Warp(Hit.position);
+            //    // enemy needs to get enabled and start chasing now.
+            //    enemy.EnemyFollow.player = Player;
+            //    enemy.Agent.enabled = true;
+            //    enemy.EnemyFollow.StartChasing();
+            //}
+            //else
+            //{
+            //    Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {Triangulation.vertices[VertexIndex]}");
+            //}
+
+            Transform spawner = SpawnLocations[Random.Range(0, SpawnLocations.Count)];
+
+            enemy.Agent.Warp(spawner.position);
+            // enemy needs to get enabled and start chasing now.
+            enemy.EnemyFollow.player = Player;
+            enemy.Agent.enabled = true;
+            enemy.EnemyFollow.StartChasing();
         }
         else
         {

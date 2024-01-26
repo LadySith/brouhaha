@@ -76,4 +76,10 @@ public class EnemyFollow : MonoBehaviour
             animator.SetTrigger("Attack");
         }
     }
+
+    public void Kill()
+    {
+        animator.enabled = false;
+        enemy.enabled = false;
+    }
 }
