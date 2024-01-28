@@ -276,7 +276,7 @@ AnimatorController:
     m_Mask: {fileID: 31900000, guid: ca34ef2207595c945888814dd3c9e41c, type: 2}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 1
     m_IKPass: 0
@@ -285,7 +285,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: LeftHand
     m_StateMachine: {fileID: 7247449978145536376}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: ca34ef2207595c945888814dd3c9e41c, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
